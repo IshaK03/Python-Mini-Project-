@@ -82,8 +82,8 @@ def mainGame():
     playerMinVelY = -8
     playerAccY = 1
 
-    playerFlapAccv = -8 # velocity while flapping
-    playerFlapped = False # It is true only when the bird is flapping                
+    playerFlyV = -8 # velocity while flying
+    playerFly = False # It is true only when the bird is flying               
             
             
             
