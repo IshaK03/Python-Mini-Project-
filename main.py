@@ -52,6 +52,27 @@ def welcomeScreen():
                 GAME_SOUNDS['welcome1'].set_volume(0.5)
                 FPSCLOCK.tick(FPS)
                 
+def getRandomObstacle():
+    obstacles = ["bamboo","rock","fire"]
+    obstacle = random.choice(obstacles)
+    return obstacle
+
+def getRandomPipe(choice):
+    """
+    Generate positions of two pipes(one bottom straight and one top rotated ) for blitting on the screen
+    """
+
+    pipeHeight = GAME_SPRITES[choice][0].get_height()
+    offset = SCREENHEIGHT/3.2
+    y2 = offset + random.randrange(0, int(SCREENHEIGHT - GAME_SPRITES['base'].get_height()  - 1.2 *offset))
+    pipeX = SCREENWIDTH + 10
+    y1 = pipeHeight - y2 + offset
+    pipe = [
+        {'x': pipeX, 'y': -y1}, #upper Pipe
+        {'x': pipeX, 'y': y2} #lower Pipe
+    ]
+    return pipe
+
 def mainGame():
     
     global score
