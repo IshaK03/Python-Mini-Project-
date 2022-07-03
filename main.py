@@ -76,6 +76,15 @@ def getRandomPipe(choice):
     ]
     return pipe
 
+def show_score(x,y):
+    global score
+    font = pygame.font.Font('PixelCraft-2Odxo.otf', 20)
+    scoredisp = font.render('Dumplings Earned: ' + str(score), True, (0,0,0))
+    SCREEN.blit(GAME_SPRITES['dumplings'], (x-3,y+10))
+    SCREEN.blit(scoredisp, (x-8,y-9))
+    pygame.display.update()
+    score=0
+    
 def mainGame():
     
     global score
