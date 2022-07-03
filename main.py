@@ -160,6 +160,30 @@ def mainGame():
             SCREEN.blit(GAME_SPRITES[obs2][0], (upperPipe['x'], upperPipe['y']))
             SCREEN.blit(GAME_SPRITES[obs1][1], (lowerPipe['x'], lowerPipe['y']))    
             
+        SCREEN.blit(GAME_SPRITES['base'], (basex, GROUNDY))
+        SCREEN.blit(GAME_SPRITES['player'], (playerx, playery))
+        myDigits = [int(x) for x in list(str(score))]
+        width = 0
+        for digit in myDigits:
+            width += GAME_SPRITES['numbers'][digit].get_width()
+        Xoffset = (SCREENWIDTH - width)/2
+
+        for digit in myDigits:
+            SCREEN.blit(GAME_SPRITES['numbers'][digit], (Xoffset, SCREENHEIGHT*0.12))
+            Xoffset += GAME_SPRITES['numbers'][digit].get_width()
+        pygame.display.update()
+        FPSCLOCK.tick(FPS)
+
+def isCollide(playerx, playery, upperPipes, lowerPipes, obs1, obs2):
+    
+    if playery<0:
+        GAME_SOUNDS['bgm1'].stop()
+        GAME_SOUNDS['hit1'].play()
+        return True
+    
+    
+    
+            
             
             
 
