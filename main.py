@@ -22,6 +22,33 @@ FIRE = 'gallery/sprites/fire.png'
 DUMPLINGS = 'gallery/sprites/dumplings.png'
 score=0
 
+def welcomeScreen():
+    """
+    Shows welcome images on the screen
+    """
+    playerx = int(SCREENWIDTH/5)
+    playery = int((SCREENHEIGHT - GAME_SPRITES['player'].get_height())/2)
+    messagex = int((SCREENWIDTH - GAME_SPRITES['message'].get_width())/2)
+    messagey = int(SCREENHEIGHT*0.13)
+    basex = 0
+    while True:
+        for event in pygame.event.get():
+            # if user clicks on cross button, close the game
+            if event.type == QUIT or (event.type==KEYDOWN and event.key == K_ESCAPE):
+                pygame.quit()
+                sys.exit()
+
+            # If the user presses space or up key, start the game for them
+            elif event.type==KEYDOWN and (event.key==K_SPACE or event.key == K_UP):
+                GAME_SOUNDS['welcome1'].stop()
+                GAME_SOUNDS['bgm1'].play()
+                return
+            
+            
+            
+            
+            
+
 if __name__ == "__main__":
     # This will be the main point from where our game will start
     FPSCLOCK = pygame.time.Clock()
@@ -60,3 +87,7 @@ if __name__ == "__main__":
     GAME_SOUNDS['welcome1'] = pygame.mixer.Sound('gallery/audio/welcome1.mp3')
     GAME_SOUNDS['hit1'] = pygame.mixer.Sound('gallery/audio/hit1.mp3')
     GAME_SOUNDS['bgm1'] = pygame.mixer.Sound('gallery/audio/bgm1.mp3')
+    
+    while True:
+        welcomeScreen() # Shows welcome screen to the user until he presses a button
+        mainGame() # This is the main game function 
