@@ -57,6 +57,9 @@ def getRandomObstacle():
     obstacle = random.choice(obstacles)
     return obstacle
 
+textx=50
+texty=420
+
 def getRandomPipe(choice):
     """
     Generate positions of two pipes(one bottom straight and one top rotated ) for blitting on the screen
@@ -181,12 +184,21 @@ def isCollide(playerx, playery, upperPipes, lowerPipes, obs1, obs2):
         GAME_SOUNDS['hit1'].play()
         return True
     
-    
-    
-            
-            
-            
+     for pipe in upperPipes:
+        pipeHeight = GAME_SPRITES[obs1][0].get_height()
+        if(playery < pipeHeight + pipe['y'] and abs(playerx - pipe['x']) < GAME_SPRITES[obs1][0].get_width()):
+            GAME_SOUNDS['bgm1'].stop()
+            GAME_SOUNDS['hit1'].play()
+            return True
 
+     for pipe in lowerPipes:
+        if (playery + GAME_SPRITES['player'].get_height() > pipe['y']) and abs(playerx - pipe['x']) < GAME_SPRITES[obs2][0].get_width():
+            GAME_SOUNDS['bgm1'].stop()
+            GAME_SOUNDS['hit1'].play()
+            return True
+
+    return False
+                               
 if __name__ == "__main__":
     # This will be the main point from where our game will start
     FPSCLOCK = pygame.time.Clock()
