@@ -122,7 +122,26 @@ def mainGame():
             return show_score(textx, texty)
         
         
+        #check for score
         
+        playerMidPos = playerx + GAME_SPRITES['player'].get_width()/2
+        for pipe in upperPipes:
+            pipeMidPos = pipe['x'] + GAME_SPRITES[getRandomObstacle()][0].get_width()/2
+            if pipeMidPos<= playerMidPos < pipeMidPos +4:
+                score +=1
+        
+        if playerVelY <playerMaxVelY and not playerFly:
+            playerVelY += playerAccY
+
+        if playerFly:
+            playerFly = False            
+        playerHeight = GAME_SPRITES['player'].get_height()
+        playery = playery + min(playerVelY, GROUNDY - playery - playerHeight)
+
+        # move pipes to the left
+        for upperPipe , lowerPipe in zip(upperPipes, lowerPipes):
+            upperPipe['x'] += pipeVelX
+            lowerPipe['x'] += pipeVelX
             
             
             
