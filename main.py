@@ -143,6 +143,22 @@ def mainGame():
             upperPipe['x'] += pipeVelX
             lowerPipe['x'] += pipeVelX
             
+         # Add a new pipe when the first is about to cross the leftmost part of the screen
+        if 0<upperPipes[0]['x']<5:
+            newpipe = getRandomPipe(getRandomObstacle())
+            upperPipes.append(newpipe[0])
+            lowerPipes.append(newpipe[1])
+
+        # if the pipe is out of the screen, remove it
+        if upperPipes[0]['x'] < -GAME_SPRITES[obs1][0].get_width():
+            upperPipes.pop(0)
+            lowerPipes.pop(0)
+        
+        SCREEN.blit(GAME_SPRITES['background'], (0, 0))
+        
+        for upperPipe, lowerPipe in zip(upperPipes, lowerPipes):
+            SCREEN.blit(GAME_SPRITES[obs2][0], (upperPipe['x'], upperPipe['y']))
+            SCREEN.blit(GAME_SPRITES[obs1][1], (lowerPipe['x'], lowerPipe['y']))    
             
             
             
