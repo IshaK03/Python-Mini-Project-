@@ -52,8 +52,38 @@ def welcomeScreen():
                 GAME_SOUNDS['welcome1'].set_volume(0.5)
                 FPSCLOCK.tick(FPS)
                 
-                
-            
+def mainGame():
+    
+    global score
+    playerx = int(SCREENWIDTH/5)
+    playery = int(SCREENWIDTH/2)
+    basex = 0
+
+    # Create 2 pipes for blitting on the screen
+    obs1=getRandomObstacle()
+    obs2=getRandomObstacle()
+    newPipe1 = getRandomPipe(obs1)
+    newPipe2 = getRandomPipe(obs2)
+
+    # my List of upper pipes
+    upperPipes = [
+        {'x': SCREENWIDTH+300, 'y':newPipe1[0]['y']},
+        {'x': SCREENWIDTH+300+(SCREENWIDTH/2), 'y':newPipe2[0]['y']},
+    ]
+    # my List of lower pipes
+    lowerPipes = [
+        {'x': SCREENWIDTH+300, 'y':newPipe1[1]['y']},
+        {'x': SCREENWIDTH+300+(SCREENWIDTH/2), 'y':newPipe2[1]['y']},
+    ]
+
+    pipeVelX = -4
+    playerVelY = -9
+    playerMaxVelY = 10
+    playerMinVelY = -8
+    playerAccY = 1
+
+    playerFlapAccv = -8 # velocity while flapping
+    playerFlapped = False # It is true only when the bird is flapping                
             
             
             
