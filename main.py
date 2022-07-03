@@ -21,6 +21,8 @@ ROCK= 'gallery/sprites/rock.png'
 FIRE = 'gallery/sprites/fire.png'
 DUMPLINGS = 'gallery/sprites/dumplings.png'
 score=0
+textx=50
+texty=420
 
 def welcomeScreen():
     """
@@ -57,8 +59,7 @@ def getRandomObstacle():
     obstacle = random.choice(obstacles)
     return obstacle
 
-textx=50
-texty=420
+
 
 def getRandomPipe(choice):
     """
