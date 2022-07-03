@@ -104,7 +104,25 @@ def mainGame():
     playerAccY = 1
 
     playerFlyV = -8 # velocity while flying
-    playerFly = False # It is true only when the bird is flying               
+    playerFly = False # It is true only when the bird is flying 
+    
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
+                if playery > 0:
+                    playerVelY = playerFlyV
+                    playerFly = True
+                   
+
+        crashTest = isCollide(playerx, playery, upperPipes, lowerPipes,obs1, obs2) # This function will return true if the player is crashed
+        if crashTest:       
+            return show_score(textx, texty)
+        
+        
+        
             
             
             
