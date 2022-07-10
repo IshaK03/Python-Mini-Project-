@@ -141,6 +141,15 @@ def mainGame():
                 if playery > 0:
                     playerVelY = playerFlyV
                     playerFly = True
+        
+        if playerVelY <playerMaxVelY and not playerFly:
+            playerVelY += playerAccY
+
+        if playerFly:
+            playerFly = False            
+        playerHeight = GAME_SPRITES['player'].get_height()
+        playery = playery + min(playerVelY, GROUNDY - playery - playerHeight)
+
                    
 
         crashTest = isCollide(playerx, playery, upperPipes, lowerPipes,obs1, obs2) # This function will return true if the player is crashed
@@ -156,13 +165,6 @@ def mainGame():
             if pipeMidPos<= playerMidPos < pipeMidPos +4:
                 score +=1
         
-        if playerVelY <playerMaxVelY and not playerFly:
-            playerVelY += playerAccY
-
-        if playerFly:
-            playerFly = False            
-        playerHeight = GAME_SPRITES['player'].get_height()
-        playery = playery + min(playerVelY, GROUNDY - playery - playerHeight)
 
         # move pipes to the left
         for upperPipe , lowerPipe in zip(upperPipes, lowerPipes):
