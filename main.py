@@ -115,12 +115,12 @@ def mainGame():
     # my List of upper pipes
     upperPipes = [
         {'x': SCREENWIDTH+300, 'y':newPipe1[0]['y']},
-        {'x': SCREENWIDTH+300+(SCREENWIDTH/2), 'y':newPipe2[0]['y']},
+        {'x': SCREENWIDTH+300+(SCREENWIDTH/2), 'y':newPipe2[0]['y']}
     ]
     # my List of lower pipes
     lowerPipes = [
         {'x': SCREENWIDTH+300, 'y':newPipe1[1]['y']},
-        {'x': SCREENWIDTH+300+(SCREENWIDTH/2), 'y':newPipe2[1]['y']},
+        {'x': SCREENWIDTH+300+(SCREENWIDTH/2), 'y':newPipe2[1]['y']}
     ]
 
     pipeVelX = -4
@@ -130,7 +130,7 @@ def mainGame():
     playerAccY = 1
 
     playerFlyV = -8 # velocity while flying
-    playerFly = False # It is true only when the bird is flying 
+    playerFly = False # It is true only when flying 
     
     while True:
         for event in pygame.event.get():
