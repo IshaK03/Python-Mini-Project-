@@ -206,6 +206,7 @@ def isCollide(playerx, playery, upperPipes, lowerPipes, obs1, obs2):
     
     if playery<0:
         GAME_SOUNDS['bgm1'].stop()
+        GAME_SOUNDS['hit1'].set_volume(0.5)
         GAME_SOUNDS['hit1'].play()
         return True
     
@@ -213,12 +214,14 @@ def isCollide(playerx, playery, upperPipes, lowerPipes, obs1, obs2):
         pipeHeight = GAME_SPRITES[obs1][0].get_height()
         if(playery < pipeHeight + pipe['y'] and abs(playerx - pipe['x']) < GAME_SPRITES[obs1][0].get_width()):
             GAME_SOUNDS['bgm1'].stop()
+            GAME_SOUNDS['hit1'].set_volume(0.5)
             GAME_SOUNDS['hit1'].play()
             return True
 
     for pipe in lowerPipes:
         if (playery + GAME_SPRITES['player'].get_height() > pipe['y']) and abs(playerx - pipe['x']) < GAME_SPRITES[obs2][0].get_width():
             GAME_SOUNDS['bgm1'].stop()
+            GAME_SOUNDS['hit1'].set_volume(0.5)
             GAME_SOUNDS['hit1'].play()
             return True
 
