@@ -42,6 +42,7 @@ def welcomeScreen():
             # If the user presses space or up key, start the game for them
             elif event.type==KEYDOWN and (event.key==K_SPACE or event.key == K_UP):
                 GAME_SOUNDS['welcome1'].stop()
+                GAME_SOUNDS['bgm1'].set_volume(0.07)
                 GAME_SOUNDS['bgm1'].play()
                 return
             else:
