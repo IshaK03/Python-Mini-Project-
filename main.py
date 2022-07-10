@@ -265,6 +265,7 @@ if __name__ == "__main__":
     GAME_SOUNDS['welcome1'] = pygame.mixer.Sound('gallery/audio/welcome1.mp3')
     GAME_SOUNDS['hit1'] = pygame.mixer.Sound('gallery/audio/hit1.mp3')
     GAME_SOUNDS['bgm1'] = pygame.mixer.Sound('gallery/audio/bgm1.mp3')
+    GAME_SOUNDS['nodumplings'] = pygame.mixer.Sound('gallery/audio/nodumplings.mp3')
     
     while True:
         welcomeScreen() # Shows welcome screen to the user until he presses a button
