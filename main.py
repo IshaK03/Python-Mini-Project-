@@ -69,7 +69,7 @@ def getRandomPipe(choice):
     pipeHeight = GAME_SPRITES[choice][0].get_height()
     offset = SCREENHEIGHT/3.2
     y2 = offset + random.randrange(0, int(SCREENHEIGHT - GAME_SPRITES['base'].get_height()  - 1.2 *offset))
-    pipeX = SCREENWIDTH + 10
+    pipeX = SCREENWIDTH 
     y1 = pipeHeight - y2 + offset
     pipe = [
         {'x': pipeX, 'y': -y1}, #upper Pipe
@@ -82,11 +82,21 @@ texty=420
 
 def show_score(x,y):
     global score
-    font = pygame.font.Font('PixelCraft-2Odxo.otf', 20)
-    scoredisp = font.render('Dumplings Earned: ' + str(score), True, (0,0,0))
-    SCREEN.blit(GAME_SPRITES['dumplings'], (x-3,y+10))
-    SCREEN.blit(scoredisp, (x-8,y-9))
-    pygame.display.update()
+    if score>0:
+        font = pygame.font.Font('PixelCraft-2Odxo.otf', 20)
+        scoredisp = font.render('Dumplings Earned: ' + str(score), True, (0,0,0))
+        SCREEN.blit(GAME_SPRITES['dumplings'], (x-3,y+10))
+        SCREEN.blit(scoredisp, (x-8,y-9))
+        pygame.display.update()
+    if score==0:
+        font = pygame.font.Font('PixelCraft-2Odxo.otf', 19)
+        scoredisp = font.render('Oops ! No dumplings ' , True, (0,0,0))
+        scoredisp2 = font.render('for Po : /' , True, (0,0,0))
+        SCREEN.blit(scoredisp, (x,y-9))
+        SCREEN.blit(scoredisp2, (x+50,y+20))
+        GAME_SOUNDS['nodumplings'].play()
+        pygame.display.update() 
+    time.sleep(3)      
     score=0
     
 def mainGame():
