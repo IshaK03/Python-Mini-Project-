@@ -50,8 +50,8 @@ def welcomeScreen():
                 SCREEN.blit(GAME_SPRITES['message'], (messagex,messagey ))    
                 SCREEN.blit(GAME_SPRITES['base'], (basex, GROUNDY))
                 pygame.display.update()
+                GAME_SOUNDS['welcome1'].set_volume(0.05)
                 GAME_SOUNDS['welcome1'].play()
-                GAME_SOUNDS['welcome1'].set_volume(0.5)
                 FPSCLOCK.tick(FPS)
                 
 def getRandomObstacle():
