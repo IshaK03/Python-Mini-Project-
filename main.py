@@ -22,8 +22,6 @@ ROCK= 'gallery/sprites/rock.png'
 FIRE = 'gallery/sprites/fire3.png'
 DUMPLINGS = 'gallery/sprites/dumplings.png'
 score=0
-textx=50
-texty=420
 
 def welcomeScreen():
     """
@@ -77,6 +75,9 @@ def getRandomPipe(choice):
         {'x': pipeX, 'y': y2} #lower Pipe
     ]
     return pipe
+
+textx=50
+texty=420
 
 def show_score(x,y):
     global score
